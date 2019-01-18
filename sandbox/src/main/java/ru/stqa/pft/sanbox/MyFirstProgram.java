@@ -4,5 +4,9 @@ public class MyFirstProgram{
 
 public static void main(String[] args){
 System.out.println("Hello, world!");
+area();
+}
+public static void area(){
+    System.out.println("text");
 }
 }
