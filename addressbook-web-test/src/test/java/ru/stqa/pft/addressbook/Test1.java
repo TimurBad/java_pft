@@ -1,14 +1,11 @@
 package ru.stqa.pft.addressbook;
 
-import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 
 public class Test1 {
   public ChromeDriver driver;
@@ -28,15 +25,22 @@ public class Test1 {
 
   @Test
   public void test1() throws Exception {
+    gotoWebPage();
+    login(new GroupData("bad@mail.ru", "nhjkjkj19993"));
+  }
+
+  private void gotoWebPage() {
     driver.get("https://www.postable.com/login#/");
-    ////*[@id="InputEmail1"]
+  }
+
+  private void login(GroupData groupData) {
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Get Addresses'])[1]/following::a[1]")).click();
     driver.findElement(By.id("InputEmail1")).click();
     driver.findElement(By.id("InputEmail1")).clear();
-    driver.findElement(By.id("InputEmail1")).sendKeys("bad@mail.ru");
+    driver.findElement(By.id("InputEmail1")).sendKeys(groupData.getLogin());
     driver.findElement(By.name("password")).click();
     driver.findElement(By.name("password")).clear();
-    driver.findElement(By.name("password")).sendKeys("nhjkjkj19993");
+    driver.findElement(By.name("password")).sendKeys(groupData.getPassword());
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Login'])[3]/following::button[1]")).click();
   }
 
