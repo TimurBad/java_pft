@@ -29,6 +29,7 @@ public class Test1 {
   @Test
   public void test1() throws Exception {
     driver.get("https://www.postable.com/login#/");
+    ////*[@id="InputEmail1"]
     driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Get Addresses'])[1]/following::a[1]")).click();
     driver.findElement(By.id("InputEmail1")).click();
     driver.findElement(By.id("InputEmail1")).clear();
